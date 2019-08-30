@@ -7,7 +7,7 @@ RUN cd libtorrent-rasterbar && \
     cmake . && \
     make -j`nproc` && \
     make install && \
-    strip /usr/local/lib/libtorrent-rasterbar.so.10.0.0
+    strip /usr/local/lib64/libtorrent-rasterbar.so*
 
 COPY qbittorrent qbittorrent
 
@@ -19,7 +19,7 @@ RUN cd qBittorrent && \
 
 FROM alpine:latest
 
-COPY --from=builder /usr/local/lib/libtorrent-rasterbar.so.10.0.0 /usr/lib/libtorrent-rasterbar.so.10
+COPY --from=builder /usr/local/lib64/libtorrent-rasterbar.so* /usr/lib/
 
 COPY --from=builder /usr/local/bin/qbittorrent-nox /usr/bin/qbittorrent-nox
 
