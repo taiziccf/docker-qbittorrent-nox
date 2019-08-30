@@ -3,8 +3,8 @@ FROM alpine:latest AS builder
 COPY libtorrent-rasterbar libtorrent-rasterbar
 
 RUN cd libtorrent-rasterbar && \
-    apk add --no-cache make g++ boost-dev openssl-dev && \
-    ./configure --disable-static && \
+    apk add --no-cache cmake make g++ boost-dev openssl-dev && \
+    cmake . && \
     make -j`nproc` && \
     make install && \
     strip /usr/local/lib/libtorrent-rasterbar.so.10.0.0
