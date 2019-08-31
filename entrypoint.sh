@@ -1,8 +1,8 @@
 #!/bin/sh
 
-useradd -d /config -u $CHUID -g $CHGID -o qbittorrent
-
-chown qbittorrent:qbittorrent /config
+if ! id qbittorrent; then
+    useradd -d /config -u $CHUID -g $CHGID -o qbittorrent
+fi
 
 if [ ! -f /config/qBittorrent/qBittorrent.conf ]; then
     mkdir -p /config/qBittorrent/
@@ -23,7 +23,7 @@ Downloads\TempPath=/downloads/incomplete/
 WebUI\Address=*
 WebUI\ServerDomains=*
 EOF
-    chown qbittorrent:qbittorrent /config/qBittorrent/qBittorrent.conf
+    chown -R qbittorrent /config
 fi
 
 su qbittorrent << EOF
