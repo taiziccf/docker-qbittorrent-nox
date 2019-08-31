@@ -1,5 +1,7 @@
 #!/bin/sh
 
+adduser --home /config --uid $CHUID --gid $CHGID --disabled-password qbittorrent
+
 if [ ! -f /config/qBittorrent/qBittorrent.conf ]; then
     mkdir -p /config/qBittorrent/
     cat << EOF > /config/qBittorrent/qBittorrent.conf
@@ -19,6 +21,9 @@ Downloads\TempPath=/downloads/incomplete/
 WebUI\Address=*
 WebUI\ServerDomains=*
 EOF
+    chown qbittorrent:qbittorrent /config/qBittorrent/qBittorrent.conf
 fi
 
+su qbittorrent << EOF
 HOME="/config" XDG_CONFIG_HOME="/config" XDG_DATA_HOME="/config" qbittorrent-nox --webui-port=$WEBUI_PORT
+EOF
