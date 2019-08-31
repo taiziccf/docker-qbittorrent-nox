@@ -1,6 +1,8 @@
 #!/bin/sh
 
-adduser --home /config --uid $CHUID --gid $CHGID --disabled-password qbittorrent
+useradd -d /config -u $CHUID -g $CHGID -o qbittorrent
+
+chown qbittorrent:qbittorrent /config
 
 if [ ! -f /config/qBittorrent/qBittorrent.conf ]; then
     mkdir -p /config/qBittorrent/
