@@ -1,7 +1,15 @@
 #!/bin/sh
 
 if ! id qbittorrent; then
+    echo "[WARNING] User not found. Maybe first bootstrap?"
+    echo "[INFO] Try to create user qbittorrent."
+    groupadd -g $CHGID -o qbittorrent
     useradd -d /config -u $CHUID -g $CHGID -o qbittorrent
+    if [ -d /config ]; then
+        echo "[INFO] Try to fix config folder permissions."
+        chown -R $CHUID:$CHGID /config
+    fi
+    echo "[INFO] User qbittorrent($CHUID:$CHGID) created."
 fi
 
 if [ ! -f /config/qBittorrent/qBittorrent.conf ]; then
@@ -23,7 +31,7 @@ Downloads\TempPath=/downloads/incomplete/
 WebUI\Address=*
 WebUI\ServerDomains=*
 EOF
-    chown -R qbittorrent /config
+    chown $CHUID:$CHGID /config/qBittorrent/qBittorrent.conf
 fi
 
 su qbittorrent << EOF
