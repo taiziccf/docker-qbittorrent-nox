@@ -1,6 +1,7 @@
 FROM alpine:edge
 
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing qbittorrent-nox shadow
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing qbittorrent-nox shadow \
+    && userdel -r qbittorrent
 
 ADD qBittorrent.conf /etc/opt/qBittorrent.conf
 
