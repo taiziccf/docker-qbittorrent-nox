@@ -4,6 +4,8 @@ RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/te
 
 ADD qBittorrent.conf /etc/opt/qBittorrent.conf
 
+ADD entrypoint.sh /entrypoint.sh
+
 ENV WEBUI_PORT=8080 CHUID=1000 CHGID=1000
 
 EXPOSE 6881 6881/udp 8080
