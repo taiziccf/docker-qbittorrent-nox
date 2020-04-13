@@ -13,7 +13,7 @@ fi
 if [ ! -f /config/qBittorrent/qBittorrent.conf ]; then
     echo "[INFO] generate default config."
     mkdir -p /config/qBittorrent/
-    cp /etc/opt/qBittorrent.conf
+    cp /etc/opt/qBittorrent.conf /config/qBittorrent/qBittorrent.conf
     chown $CHUID:$CHGID /config/qBittorrent/qBittorrent.conf
 fi
 
