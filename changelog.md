@@ -1,0 +1,2 @@
+- 2020-04-23
+  - libtorrent-rasterbar 1.2.6-r0 
