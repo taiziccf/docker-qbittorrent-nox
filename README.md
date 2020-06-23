@@ -17,3 +17,7 @@ $ docker create --name=qbittorrent-nox \
   --restart unless-stopped \
   caoli5288/qbittorrent-nox
 ```
+
+## Changelogs
+
+* 2020-06-23 rebuild for libtorrent-rasterbar 1.2.7 
