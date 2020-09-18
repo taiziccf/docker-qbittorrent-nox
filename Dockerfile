@@ -1,7 +1,16 @@
-FROM alpine:edge
+FROM alpine AS builder
 
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing qbittorrent-nox shadow \
-    && userdel -r qbittorrent
+ADD build.sh /build/sh
+
+RUN sh /build.sh
+
+FROM alpine
+
+RUN apk add --no-cache shadow libstdc++ qt5-qtbase
+
+COPY --from=builder /usr/local/lib/libtorrent-rasterbar.so.1.2.10 /usr/local/lib/libtorrent-rasterbar.so.10
+
+COPY --from=builder /usr/local/bin/qbittorrent-nox /usr/local/bin/qbittorrent-nox
 
 ADD qBittorrent.conf /etc/opt/qBittorrent.conf
 
