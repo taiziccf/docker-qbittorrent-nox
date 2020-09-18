@@ -1,6 +1,6 @@
 FROM alpine AS builder
 
-ADD build.sh /build/sh
+ADD build.sh /build.sh
 
 RUN sh /build.sh
 
