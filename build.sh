@@ -2,7 +2,7 @@
 
 apk add make cmake g++ openssl-dev boost-dev qt5-qtbase-dev qt5-qttools-dev
 
-wget https://github.com/arvidn/libtorrent/releases/download/libtorrent-1.2.10/libtorrent-rasterbar-1.2.11.tar.gz
+wget https://github.com/arvidn/libtorrent/releases/download/v1.2.11/libtorrent-rasterbar-1.2.11.tar.gz
 
 tar xvf libtorrent-rasterbar-1.2.11.tar.gz
 
