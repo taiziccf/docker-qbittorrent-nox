@@ -8,7 +8,7 @@ FROM alpine
 
 RUN apk add --no-cache shadow libstdc++ qt5-qtbase
 
-COPY --from=builder /usr/local/lib/libtorrent-rasterbar.so.1.2.10 /usr/local/lib/libtorrent-rasterbar.so.10
+COPY --from=builder /usr/local/lib/libtorrent-rasterbar.so.1.2.11 /usr/local/lib/libtorrent-rasterbar.so.11
 
 COPY --from=builder /usr/local/bin/qbittorrent-nox /usr/local/bin/qbittorrent-nox
 
